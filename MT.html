@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .footer {
+            position: absolute;
+            width: 100%;
+            background: #0088ff;
+            min-height: 100px;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top:1000px;
+            z-index:999;
+          }
+          
+          .social-icon,
+          .menufooter {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+          }
+          
+          .social-icon__item,
+          .menu__itemfooter {
+            list-style: none;
+          }
+          
+          .social-icon__link {
+            font-size: 2rem;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
+          }
+          .social-icon__link:hover {
+            transform: translateY(-10px);
+          }
+          
+          .menu__linkfooter {
+            font-size: 1.2rem;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
+            text-decoration: none;
+            opacity: 0.75;
+            font-weight: 300;
+          }
+          
+          .menu__linkfooter:hover {
+            opacity: 1;
+          }
+          
+          .footer p {
+            color: #fff;
+            margin: 15px 0 10px 0;
+            font-size: 1rem;
+            font-weight: 300;
+          }
+          
+          .wave {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url("https://i.ibb.co/wQZVxxk/wave.png");
+            background-size: 1000px 100px;
+          }
+          
+          .wave#wave1 {
+            z-index: 1000;
+            opacity: 1;
+            bottom: 0;
+            animation: animateWaves 4s linear infinite;
+          }
+          
+          .wave#wave2 {
+            z-index: 999;
+            opacity: 0.5;
+            bottom: 10px;
+            animation: animate 4s linear infinite !important;
+          }
+          
+          .wave#wave3 {
+            z-index: 1000;
+            opacity: 0.2;
+            bottom: 15px;
+            animation: animateWaves 3s linear infinite;
+          }
+          
+          .wave#wave4 {
+            z-index: 999;
+            opacity: 0.7;
+            bottom: 20px;
+            animation: animate 3s linear infinite;
+          }
+          
+          @keyframes animateWaves {
+            0% {
+              background-position-x: 1000px;
+            }
+            100% {
+              background-positon-x: 0px;
+            }
+          }
+          
+          @keyframes animate {
+            0% {
+              background-position-x: -1000px;
+            }
+            100% {
+              background-positon-x: 0px;
+            }
+          }
+          
+
+          @import url("https://fonts.googleapis.com/css?family=Alata&display=swap");
+          * {
+            box-sizing: border-box;
+          }
+          :root {
+            --speed: 0.85;
+            --primary: #fff;
+            --size: 20;
+            --ease: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          }
+          
+          main {
+            
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            -ms-scroll-snap-type: y mandatory;
+                scroll-snap-type: y mandatory;
+          }
+          section {
+            align-items: center;
+            display: flex;
+            font-size: 3rem;
+        
+            justify-content: center;
+            scroll-snap-align: center;
+            width: 100vw;
+          }
+          .menu {
+            position: fixed;
+          }
+          .menu__toggle {
+            opacity: 0;
+            position: fixed;
+          }
+          .menu__toggle:checked ~ .menu__content .menu__item {
+            --active-x: var(--x);
+            --active-y: var(--y);
+            --scale: 1;
+          }
+          .menu__toggle:checked ~ .menu__toggle-label:not(.menu__toggle-label--closer) {
+            --clip: circle(1000% at 0% 0%);
+            height: 100vh;
+            width: 100vw;
+            -webkit-backdrop-filter: blur(10px);
+                    backdrop-filter: blur(10px);
+          }
+          .menu__toggle:checked ~ .menu__toggle-label .menu__icon:nth-of-type(1) {
+            --scale: 0;
+          }
+          .menu__toggle:checked ~ .menu__toggle-label .menu__icon:nth-of-type(2) {
+            --scale: 1;
+          }
+          .menu__toggle-label {
+            cursor: pointer;
+            height: calc(var(--size, 20) * 0.5vmin);
+            width: calc(var(--size, 20) * 0.5vmin);
+            display: block;
+            --clip: circle(100% at 0% 0%);
+            -webkit-clip-path: var(--clip);
+            clip-path: var(--clip);
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: backdrop-filter calc(var(--speed, 1) * 1s) var(--ease), clip-path 0s, -webkit-clip-path 0s;
+          }
+          .menu__toggle-label--closer {
+            z-index: 3;
+            --scale: 0;
+          }
+          .menu__icon {
+            --scale: 1;
+            height: calc(var(--size, 20) * 0.25vmin);
+            width: calc(var(--size, 20) * 0.25vmin);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-70%, -70%) scale(var(--scale, 1));
+            fill: var(--primary);
+            transition: all calc(var(--speed, 1) * 1s) var(--ease);
+            
+          }
+          .menu__icon:nth-of-type(2) {
+            --scale: 0;
+          }
+          .menu__content {
+            background: #0088ff;
+           
+            margin: 0;
+            display: block;
+            list-style-type: none;
+     
+            filter: url("#goo");
+            position: absolute;
+            top: 0;
+            height: 0;
+            width: 0;
+            left: 0;
+           
+            
+          }
+          .menu__content:after {
+            background: #0088ff;
+            content: '';
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            height: calc(var(--size, 20) * 1vmin);
+            width: calc(var(--size, 20) * 1vmin);
+            top: 0;
+            left: 0;
+          }
+          .menu__item {
+            background: #0088ff;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            list-style-type: none;
+            font-size: 1rem;
+            height: calc(var(--size, 20) * 1vmin);
+            left: calc(var(--active-x, 0) * 1vw);
+            overflow: hidden;
+            place-items: center;
+            position: absolute;
+            text-align: center;
+            top: calc(var(--active-y, 0) * 1vh);
+            transform: translate(-50%, -50%) scale(var(--scale, 0.75));
+            transition: all calc(var(--speed, 1) * 1s) calc(var(--delay, 0) * 1s) var(--ease);
+            width: calc(var(--size, 20) * 1vmin);
+          }
+          @media (min-width: 768px) {
+            .menu__item {
+              font-size: 3rem;
+            }
+          }
+          .menu__item:nth-of-type(1) {
+            --delay: 0.1;
+            --x: 35;
+            --y: 35;
+          }
+          .menu__item:nth-of-type(2) {
+            --delay: 0.2;
+            --x: 65;
+            --y: 35;
+          }
+          .menu__link {
+            align-items: center;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+          }
+          
+    </style>
+</head>
+<header>
+    <nav class="menu" >
+        <input class="menu__toggle" type="checkbox" id="menu-toggle"/>
+        <label class="menu__toggle-label" for="menu-toggle"></label>
+        <label class="menu__toggle-label menu__toggle-label--closer" for="menu-toggle">
+          <svg class="menu__icon" preserveAspectRatio="xMinYMin" viewBox="0 0 24 24">
+            <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path>
+          </svg>
+          <svg class="menu__icon" preserveAspectRatio="xMinYMin" viewBox="0 0 24 24">
+            <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path>
+          </svg>
+        </label>
+        <ul class="menu__content">
+          <li class="menu__item" style="--x: 20; --y: 22;"><a class="menu__link" href="dijkstra.html">Dijkstra</a></li>
+          <li class="menu__item" style="--x: 53; --y: 25;"><a class="menu__link" href="prim.html">Prim</a></li>
+    
+        </ul>
+      </nav>
+</header>
+<body class="main-content">
+    <header class="container header active" id="home">
+        <div class="header-content">
+            <div class="left-header">
+                <div class="h-shape"></div>
+                <div class="image">
+                    <img src="img/Thien.jpg" alt="">
+                </div>
+            </div>
+            <div class="right-header">
+                <h1 class="name">
+                    <span>48.01.103.077</span>
+                    Phạm Minh Thiện
+                </h1>
+                <p>
+                    - Hỗ trợ làm web
+                </p>
+                <p>
+                    - Tổng hợp ý kiến
+                </p>
+                <div class="btn-con">
+                    <a href="" class="main-btn">
+                        <span class="btn-text">Download CV</span>
+                        <span class="btn-icon"><i class="fas fa-download"></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+    <div class="controls">
+        <div class="control active-btn" data-id="home" >
+            <a href="MN.html"><i class="fas fa-user"></i></i></a>
+        </div>
+        <div class="control" data-id="about">
+            <a href="DT.html"><i class="fas fa-user"></i></i></a>
+        </div>
+        <div class="control" data-id="portfolio">
+            <a href="MT.html"><i class="fas fa-user"></i></i></a>
+        </div>
+        <div class="control" data-id="blogs">
+            <a href="QT.html"><i class="fas fa-user"></i></i></a>
+        </div>
+        <div class="control" data-id="contact">
+            <a href="TD.html"><i class="fas fa-user"></i></i></a>
+        </div>
+    </div>
+    <div class="theme-btn">
+        <i class="fas fa-adjust"></i>
+    </div>
+    <footer class="footer">
+        <div class="waves">
+          <div class="wave" id="wave1"></div>
+          <div class="wave" id="wave2"></div>
+          <div class="wave" id="wave3"></div>
+          <div class="wave" id="wave4"></div>
+        </div>
+        <ul class="social-icon">
+          <li class="social-icon__item"><a class="social-icon__link" href="#">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a></li>
+        </ul>
+        
+       
+      </footer>
+    <script src="app.js"></script>
+</body>
+</html>
